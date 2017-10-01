@@ -1,0 +1,18 @@
+machine:
+  node:
+    version: 6.10.0
+-- becomes --
+version: 2
+jobs:
+  build:
+    working_directory: ~/azure-appservice-static
+    docker:
+      - image: node:6.10.0
+    steps:
+      - checkout
+      - run:
+          name: Install Dependencies
+          command: npm install
+      - run:
+          name: NPM Test
+          command: npm test
